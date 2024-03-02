@@ -2,11 +2,11 @@
 
 {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
     ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/starship.nix
     ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/nixvim.nix
+    ../../modules/home-manager/k8s.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
