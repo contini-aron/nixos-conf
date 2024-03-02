@@ -3,10 +3,12 @@
 {
   imports = [
     ../../modules/home-manager/hyprland.nix
+    ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/starship.nix
     ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/nixvim.nix
     ../../modules/home-manager/k8s.nix
+    ../../modules/home-manager/programming.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
