@@ -10,6 +10,7 @@
     ../../modules/home-manager/k8s.nix
     ../../modules/home-manager/programming.nix
     ../../modules/home-manager/terminal.nix
+    ../../modules/home-manager/music.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.

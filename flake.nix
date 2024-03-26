@@ -8,6 +8,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    musnix  = { 
+      url = "github:musnix/musnix"; 
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,6 +30,7 @@
           modules = [ 
             ./hosts/default/configuration.nix
             inputs.home-manager.nixosModules.default
+	    inputs.musnix.nixosModules.musnix
           ];
         };
 #      nixosConfigurations.work = nixpkgs.lib.nixosSystem {

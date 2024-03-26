@@ -89,19 +89,24 @@
       };
       
       # completion
-      cmp.settings = {
+      cmp = {
 	enable = true;
 	autoEnableSources = true;
-        sources = [
+	settings.sources = [
 	  {name = "nvim_lsp";}
+	  {name = "luasnip";}
 	  {name = "path";}
 	  {name = "buffer";}
-	  {name = "luasnip";}
 	];
-	mapping = {
+	settings.snippet.expand = ''
+	  function(args)
+	    require('luasnip').lsp_expand(args.body)
+	  end
+	'';
+	settings.mapping = {
 	  "<CR>" = "cmp.mapping.confirm({ select = true })";
-	  "<Tab>" = {
-	    action = ''
+	  "<Tab>" = ''
+	    cmp.mapping(
 	      function(fallback)
 		if cmp.visible() then
 		  cmp.select_next_item()
@@ -115,9 +120,10 @@
 		  fallback()
 		end
 	      end
-	    '';
-	    modes = [ "i" "s" ];
-	  };
+	    ,
+	    { "i", "s" }
+	  )
+	  '';
 	};
       };
 

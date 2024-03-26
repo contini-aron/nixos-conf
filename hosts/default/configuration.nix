@@ -12,6 +12,35 @@
       inputs.home-manager.nixosModules.default
     ];
 
+  # music config
+  musnix.enable = true;
+  security.pam.loginLimits = [
+    {
+      domain = "@audio";
+      item = "memlock";
+      type = "-";
+      value = "unlimited";
+    }
+    {
+      domain = "@audio";
+      item = "rtprio";
+      type = "-";
+      value = "99";
+    }
+    {
+      domain = "@audio";
+      item = "nofile";
+      type = "soft";
+      value = "99999";
+    }
+    {
+      domain = "@audio";
+      item = "nofile";
+      type = "hard";
+      value = "99999";
+    }
+  ];
+
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -58,7 +87,7 @@
   users.users.aron = {
     isNormalUser = true;
     description = "aron";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" ];
     packages = with pkgs; [];
   };
 
@@ -90,6 +119,7 @@
     spotify
 
     tree
+    dolphin
 
     # keyboard
     bazecor
