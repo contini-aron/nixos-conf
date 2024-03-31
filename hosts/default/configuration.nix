@@ -7,10 +7,11 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../modules/nixos/podman.nix
       inputs.home-manager.nixosModules.default
       inputs.musnix.nixosModules.musnix
+      ./hardware-configuration.nix
+      ../../modules/nixos/podman.nix
+      #../../modules/defaults/default.nix
     ];
 
   # music config
@@ -43,7 +44,7 @@
   ];
 
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  #nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

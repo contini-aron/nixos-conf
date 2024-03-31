@@ -1,5 +1,4 @@
-# home.nix
-
+# hyprland home manager
 { pkgs, lib, config, ... }:
 
   let
@@ -10,7 +9,7 @@
   
       sleep 1
   
-      ${pkgs.swww}/bin/swww img ${./wallpaper.jpeg} &
+      ${pkgs.swww}/bin/swww img ${../../resources/wallpapers/default.jpeg} &
     '';
 in
 {

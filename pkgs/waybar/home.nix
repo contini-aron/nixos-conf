@@ -1,6 +1,3 @@
-# home.nix
-
-{ pkgs, lib, config, ... }:
 let
   font = "FiraCode Nerd Font";
   fontsize = "12";

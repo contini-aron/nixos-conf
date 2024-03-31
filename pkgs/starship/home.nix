@@ -1,5 +1,4 @@
-# home.nix
-
+# starship home manager config
 { pkgs, lib, config, ... }:
 
 {

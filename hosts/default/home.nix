@@ -2,15 +2,7 @@
 
 {
   imports = [
-    ../../modules/home-manager/hyprland.nix
-    ../../modules/home-manager/hyprland.nix
-    ../../modules/home-manager/starship.nix
-    ../../modules/home-manager/waybar.nix
-    ../../modules/home-manager/nixvim.nix
-    ../../modules/home-manager/k8s.nix
-    ../../modules/home-manager/programming.nix
-    ../../modules/home-manager/terminal.nix
-    ../../modules/home-manager/music.nix
+    ../../modules/home-manager/default.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
