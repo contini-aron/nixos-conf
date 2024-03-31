@@ -22,7 +22,7 @@
     ];
     colorschemes.gruvbox.enable = true;
     globals.mapleader = " ";
-    options = {
+    opts = {
       number = true;         # Show line numbers
       relativenumber = true; # Show relative line numbers
       shiftwidth = 2;        # Tab width should be 2
@@ -62,7 +62,7 @@
       # snippets
       luasnip.enable = true;
       # comments
-      comment-nvim.enable = true;
+      comment.enable = true;
       # which key
       which-key = {
         enable = true;
