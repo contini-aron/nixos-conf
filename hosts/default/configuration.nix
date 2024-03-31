@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ../../modules/nixos/podman.nix
       inputs.home-manager.nixosModules.default
+      inputs.musnix.nixosModules.musnix
     ];
 
   # music config

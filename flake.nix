@@ -29,8 +29,6 @@
           specialArgs = {inherit inputs;};
           modules = [ 
             ./hosts/default/configuration.nix
-            inputs.home-manager.nixosModules.default
-	    inputs.musnix.nixosModules.musnix
           ];
         };
 #      nixosConfigurations.work = nixpkgs.lib.nixosSystem {
