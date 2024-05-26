@@ -8,40 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       inputs.home-manager.nixosModules.default
-      inputs.musnix.nixosModules.musnix
       ./hardware-configuration.nix
-      ../../modules/nixos/podman.nix
-      #../../modules/defaults/default.nix
+      ../../modules/nixos/default.nix
     ];
-
-  # music config
-  musnix.enable = true;
-  security.pam.loginLimits = [
-    {
-      domain = "@audio";
-      item = "memlock";
-      type = "-";
-      value = "unlimited";
-    }
-    {
-      domain = "@audio";
-      item = "rtprio";
-      type = "-";
-      value = "99";
-    }
-    {
-      domain = "@audio";
-      item = "nofile";
-      type = "soft";
-      value = "99999";
-    }
-    {
-      domain = "@audio";
-      item = "nofile";
-      type = "hard";
-      value = "99999";
-    }
-  ];
 
 
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -109,12 +78,6 @@
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
 
-  # steam
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -123,13 +86,10 @@
     tree
     dolphin
 
-    # keyboard
-    bazecor
-
     # browser
     brave
 
-    # text editor
+    # terminal emulator
     kitty
 
     # programming
@@ -150,37 +110,11 @@
     libnotify
 
     # discord
-    # discord
-    # discord-screenaudio
     vesktop
+
+    libreoffice-qt-fresh
   ];
 
-  # pipewire
-  sound.enable = true;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-    wireplumber.enable = true;
-  };
-  
-  # Bluetooth
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-
-  services.pipewire.wireplumber.configPackages = [
-	(pkgs.writeTextDir "share/wireplumber/bluetooth.lua.d/51-bluez-config.lua" ''
-		bluez_monitor.properties = {
-			["bluez5.enable-sbc-xq"] = true,
-			["bluez5.enable-msbc"] = true,
-			["bluez5.enable-hw-volume"] = true,
-			["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
-		}
-	'')
-  ];
 
   # portals
   xdg.portal.enable = true;
@@ -190,9 +124,6 @@
   # hyprland enable
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-
-
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
