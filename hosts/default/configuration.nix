@@ -7,6 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+      inputs.stylix.homeManager.stylix
       inputs.home-manager.nixosModules.default
       ./hardware-configuration.nix
       ../../modules/nixos/default.nix
