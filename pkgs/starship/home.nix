@@ -69,8 +69,8 @@
       # Prompt: param 2 └─
       character = {
         success_symbol = " [╰─λ](bold red)";
-        error_symbol = " [×](bold red)";
-        use_symbol_for_status = true;
+        error_symbol = " [╰─X](bold red)";
+        # use_symbol_for_status = true;
       };
 
       # SYMBOLS
@@ -93,7 +93,7 @@
         symbol = " ";
       };
       
-      docker = {
+      docker_context = {
         symbol = " ";
       };
       

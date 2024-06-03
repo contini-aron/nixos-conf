@@ -38,11 +38,9 @@
 	keymaps = {
 	  "<leader>ff" = {
 	    action = "find_files";
-	    desc = "find files in workdir";
 	  };
 	  "<leader>fg" = {
 	  action = "git_files";
-	  desc = "search files in git repo";
 	  };
 	};
       };

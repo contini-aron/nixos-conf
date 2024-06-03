@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      inputs.stylix.homeManager.stylix
+      inputs.stylix.nixosModules.stylix
       inputs.home-manager.nixosModules.default
       ./hardware-configuration.nix
       ../../modules/nixos/default.nix
@@ -100,8 +100,12 @@
     # bar
     waybar
 
+    # colorschemes
+    base16-schemes
     # wallpaper
     swww
+
+    ngrok
 
     # app launcher
     rofi-wayland
