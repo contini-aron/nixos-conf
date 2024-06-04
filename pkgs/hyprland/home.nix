@@ -9,7 +9,7 @@
   
       sleep 1
   
-      ${pkgs.swww}/bin/swww img ${../../resources/wallpapers/default.jpeg} &
+      ${pkgs.swww}/bin/swww img ${../../resources/wallpapers/default.png} &
     '';
 in
 {

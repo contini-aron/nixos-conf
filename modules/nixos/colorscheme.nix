@@ -20,7 +20,7 @@
   #   base0F = "d65d0e"; # brown
   # };
 
-  stylix.image = /home/aron/flake/resources/wallpapers/default.jpeg;
+  stylix.image = /home/aron/flake/resources/wallpapers/default.png;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
   
   stylix.cursor.package = pkgs.bibata-cursors;

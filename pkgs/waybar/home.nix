@@ -1,10 +1,11 @@
+{ pkgs, lib, config, ... }:
 let
   font = "FiraCode Nerd Font";
   fontsize = "12";
-  primary_accent = "cba6f7";
-  secondary_accent = "89b4fa";
-  tertiary_accent = "f5f5f5";
-  background = "11111B";
+  primary_accent = "${config.lib.stylix.colors.base04}";
+  secondary_accent = "${config.lib.stylix.colors.base08}";
+  tertiary_accent = "${config.lib.stylix.colors.base0A}";
+  background = "${config.lib.stylix.colors.base02}";
   opacity = ".85";
   cursor = "Numix-Cursor";
 in
@@ -22,7 +23,6 @@ in
 	  }
 
 	  window#waybar {
-	      /* background: rgba(16, 18, 19, 0.8); */
 	      background-color: rgba(0, 0, 0, 0.0);
 	  }
 
@@ -37,14 +37,14 @@ in
 	      padding: 0px 5px;
 	      margin: 0px 3px;
 	      border-radius: 16px;
-	      color: transparent;
-	      background-color: #2f354a;
+	      color: #${primary_accent};
+	      background-color: transparent;
 	      transition: all 0.3s ease-in-out;
 	  }
 
 	  #workspaces button.active {
-	      background-color: #${secondary_accent};
 	      color: #${background};
+	      background-color: #${primary_accent};
 	      border-radius: 16px;
 	      min-width: 20px;
 	      background-size: 400% 400%;

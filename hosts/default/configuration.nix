@@ -93,6 +93,12 @@
     # terminal emulator
     kitty
 
+    #stats
+    btop
+    nh
+    nix-output-monitor
+    nvd
+
     # programming
     git
     neovim
