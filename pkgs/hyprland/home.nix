@@ -20,7 +20,14 @@ in
     settings = {
       "$mainmod" = "SUPER";
       "$notyficmd" = "notify-send -h string:x-canonical-private-synchronous:hypr-cfg -u low";
+      general = {
+        gaps_out = 1;
+        gaps_in = 1;
+      };
 
+      windowrulev2 = [
+	"noborder, onworkspace:w[t1]"
+      ];
       # bindings
       bind = [
         "$mainmod, T, exec, kitty"

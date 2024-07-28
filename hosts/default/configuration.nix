@@ -93,6 +93,9 @@
     # terminal emulator
     kitty
 
+    #email
+    betterbird
+
     #stats
     btop
     nh
@@ -124,6 +127,8 @@
     vesktop
 
     libreoffice-qt-fresh
+
+    lutris
   ];
 
 
