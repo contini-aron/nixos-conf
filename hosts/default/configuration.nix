@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, lib, config, ... }:
 
 {
   imports =
@@ -48,7 +48,6 @@
     LC_TELEPHONE = "it_IT.UTF-8";
     LC_TIME = "it_IT.UTF-8";
   };
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -59,7 +58,7 @@
   users.users.aron = {
     isNormalUser = true;
     description = "aron";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "libvirtd" ];
     packages = with pkgs; [];
   };
 
@@ -108,6 +107,7 @@
 
     # bar
     waybar
+    capture
 
     # colorschemes
     base16-schemes
@@ -129,8 +129,15 @@
     libreoffice-qt-fresh
 
     lutris
-  ];
 
+    floorp
+    
+    prismlauncher
+    rustup
+    steamtinkerlaunch
+
+    qemu
+  ];
 
   # portals
   xdg.portal.enable = true;
@@ -140,6 +147,10 @@
   # hyprland enable
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+
+  # virt-manager
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

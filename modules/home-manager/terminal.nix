@@ -8,4 +8,8 @@
 
   programs.atuin.enable = true;
   programs.atuin.enableBashIntegration = true;
+  programs.eza = {
+    enable = true;
+    enableBashIntegration = true;
+  };
 }

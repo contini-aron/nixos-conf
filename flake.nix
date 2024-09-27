@@ -2,6 +2,7 @@
   description = "Nixos config flake";
 
   inputs = {
+    
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     home-manager = {
@@ -20,6 +21,7 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    playit-nixos-module.url = "github:pedorich-n/playit-nixos-module";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
