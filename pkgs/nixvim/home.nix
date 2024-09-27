@@ -57,6 +57,7 @@
       };
       # sintax highlighting
       treesitter.enable = true;
+      treesitter.settings.highlight.enable = true;
       # snippets
       luasnip.enable = true;
       # comments
@@ -84,6 +85,7 @@
 	  installCargo = false;
 	  installRustc = false;
 	};
+	terraformls.enable = true;
       };
       
       # completion
