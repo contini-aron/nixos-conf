@@ -1,3 +1,4 @@
+{ pkgs, lib, config, inputs, ... }:
 {
   imports = [
     ../../pkgs/starship/home.nix
@@ -11,5 +12,10 @@
   programs.eza = {
     enable = true;
     enableBashIntegration = true;
+  };
+
+  programs.bash.shellAliases = {
+    ll = "eza -l";
+    la = "eza -la";
   };
 }
