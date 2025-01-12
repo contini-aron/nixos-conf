@@ -29,6 +29,7 @@
     };
     plugins = { 
       # UI
+      web-devicons.enable = true;
       noice.enable = true;
       notify.enable = true;
       lualine.enable = true;
@@ -62,24 +63,13 @@
       luasnip.enable = true;
       # comments
       comment.enable = true;
-      # which key
-      which-key = {
-        enable = true;
-	registrations = {
-	  "<leader>h" = "Harpoon";
-	  "<leader>ha" = "add file";
-	  "<leader>hh" = "open quick menu";
-	  "<leader>hj" = "open next file";
-	  "<leader>hk" = "open prev file";
-	};
-      };
 
       # lsp
       lsp.enable = true;
       lsp.servers = {
 	# nix lsp
 	#nixd.enable = true;
-	rust-analyzer = {
+	rust_analyzer = {
 	  enable = true;
 	  # do not automatically install cargo
 	  installCargo = false;

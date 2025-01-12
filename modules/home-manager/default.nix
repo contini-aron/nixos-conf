@@ -3,8 +3,8 @@
   imports = [
     ./terminal.nix
     ./desktop_env.nix
-    ./audio.nix
-    ./k8s.nix
+    # ./audio.nix
+    # ./k8s.nix
     ./programming.nix
   ];
 }

@@ -30,8 +30,8 @@ in
       ];
       # bindings
       bind = [
-        "$mainmod, T, exec, kitty"
-        "$mainmod, B, exec, brave"
+        "$mainmod, T, exec, ghostty"
+        "$mainmod, B, exec, floorp"
         "$mainmod, Q, killactive"
         "$mainmod, M, exit"
         "$mainmod, F, fullscreen"

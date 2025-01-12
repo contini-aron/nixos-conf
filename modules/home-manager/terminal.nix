@@ -3,6 +3,7 @@
   imports = [
     ../../pkgs/starship/home.nix
     ../../pkgs/lf/home.nix
+    ../../pkgs/ghostty/home.nix
   ];
   # file previewer
   programs.pistol.enable = true;

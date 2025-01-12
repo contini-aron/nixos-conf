@@ -8,6 +8,8 @@
     rustc
   ];
 
+  programs.bash.enable = true;
+
   imports = [
     ../../pkgs/nixvim/home.nix
   ];

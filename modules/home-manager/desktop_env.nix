@@ -3,5 +3,6 @@
   imports = [
     ../../pkgs/hyprland/home.nix
     ../../pkgs/waybar/home.nix
+    ../../pkgs/ferdium/home.nix
   ];
 }

@@ -73,27 +73,25 @@
     };
   };
 
-  # fonts
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-  ];
+  # # fonts
+  # fonts.packages = with pkgs; [
+  #   (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+  # ];
+
+   fonts.packages = [
+	 pkgs.nerd-fonts.fira-code
+	 pkgs.nerd-fonts.droid-sans-mono
+	 pkgs.nerd-fonts.caskaydia-mono
+   ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     spotify
+    ferdium
 
     tree
     dolphin
-
-    # browser
-    brave
-
-    # terminal emulator
-    kitty
-
-    #email
-    betterbird
 
     #stats
     btop
@@ -104,6 +102,7 @@
     # programming
     git
     neovim
+    typora
 
     # bar
     waybar
@@ -130,13 +129,10 @@
 
     lutris
 
+    # floorp
     floorp
     
-    prismlauncher
     rustup
-    steamtinkerlaunch
-
-    qemu
   ];
 
   # portals
@@ -148,9 +144,6 @@
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
-  # virt-manager
-  virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
