@@ -45,6 +45,7 @@
 	  };
 	};
       };
+      mini.enable = true;
       harpoon = {
 	enable = true;
 	enableTelescope = true;	# telescope integration

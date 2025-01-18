@@ -12,6 +12,7 @@
 
   imports = [
     ../../pkgs/nixvim/home.nix
+    ../../pkgs/nvf/home.nix
   ];
 
 }
