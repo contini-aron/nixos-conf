@@ -11,8 +11,7 @@
   programs.bash.enable = true;
 
   imports = [
-    ../../pkgs/nixvim/home.nix
-    ../../pkgs/nvf/home.nix
+    # ../../pkgs/nixvim/home.nix
   ];
 
 }

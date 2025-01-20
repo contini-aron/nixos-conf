@@ -2,13 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, inputs, lib, config, ... }:
+{ pkgs, inputs, neovim-conf, lib, config, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       inputs.stylix.nixosModules.stylix
       inputs.home-manager.nixosModules.default
+      inputs.nvf.nixosModules.default
       ./hardware-configuration.nix
       ../../modules/nixos/default.nix
     ];
@@ -87,6 +88,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # custom neovim-conf
+    neovim-conf
+
     spotify
     ferdium
 
