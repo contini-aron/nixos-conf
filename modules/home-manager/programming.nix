@@ -6,6 +6,7 @@
    # k8s
     go
     rustc
+    gh
   ];
 
   programs.bash.enable = true;

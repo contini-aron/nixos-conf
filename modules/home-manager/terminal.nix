@@ -6,9 +6,25 @@
     ../../pkgs/ghostty/home.nix
   ];
   home.packages = with pkgs; [
-   # k8s
-   yq
+    # k8s
+    yq
+    jq
+    neomutt
+    mutt-wizard
+    pass
+    isync
+    lynx
   ];
+
+  programs.gpg.enable = true;
+  services.gpg-agent = {
+    enable = true;
+    enableBashIntegration = true;
+    enableSshSupport = true;
+    # pinentryFlavor = "qt";
+    pinentryPackage = pkgs.pinentry-qt;
+    enableScDaemon = true;
+  };
   # file previewer
   programs.pistol.enable = true;
 
