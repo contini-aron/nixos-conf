@@ -55,5 +55,15 @@
             ./hosts/default/configuration.nix
           ];
         };
+      nixosConfigurations.work = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+            # neovim-conf = self.packages.${system}.neovim-conf;
+            inherit (self.packages.${system}) neovim-conf;
+          };
+          modules = [ 
+            ./hosts/work/configuration.nix
+          ];
+        };
     };
 }

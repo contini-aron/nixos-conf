@@ -11,7 +11,10 @@
       inputs.home-manager.nixosModules.default
       inputs.nvf.nixosModules.default
       /etc/nixos/hardware-configuration.nix
-      ../../modules/nixos/default.nix
+      ../../modules/nixos/music.nix
+      ../../modules/nixos/notes.nix
+      ../../modules/nixos/desktop_env.nix
+      ../../modules/nixos/colorscheme.nix
     ];
 
 
@@ -101,14 +104,6 @@
     nh
     nix-output-monitor
     nvd
-
-    # bar
-    #waybar
-    capture
-
-    # colorschemes
-
-    libreoffice-qt-fresh
 
     # floorp
     floorp
