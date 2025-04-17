@@ -13,10 +13,10 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # musnix  = { 
-    #   url = "github:musnix/musnix"; 
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    musnix  = { 
+      url = "github:musnix/musnix"; 
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # nixvim = {
     #   url = "github:nix-community/nixvim";
     #   inputs.nixpkgs.follows = "nixpkgs";

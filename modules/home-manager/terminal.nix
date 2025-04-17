@@ -14,6 +14,7 @@
     pass
     isync
     lynx
+    zellij
   ];
 
   programs.gpg.enable = true;

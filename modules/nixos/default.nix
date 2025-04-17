@@ -1,6 +1,6 @@
 {
   imports = [
-    # ./audio.nix
+    ./audio.nix
     # ./podman.nix
     ./gaming.nix
     ./colorscheme.nix

@@ -21,6 +21,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # docker
+  virtualisation.docker.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -59,7 +61,7 @@
   users.users.aron = {
     isNormalUser = true;
     description = "aron";
-    extraGroups = [ "networkmanager" "wheel" "audio" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "libvirtd" "docker" ];
     packages = with pkgs; [];
   };
 
@@ -94,6 +96,10 @@
 
     spotify
     ferdium
+    obsidian
+
+    prismlauncher
+
 
     tree
     dolphin
