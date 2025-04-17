@@ -10,7 +10,7 @@
       inputs.stylix.nixosModules.stylix
       inputs.home-manager.nixosModules.default
       inputs.nvf.nixosModules.default
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
       ../../modules/nixos/default.nix
     ];
 
