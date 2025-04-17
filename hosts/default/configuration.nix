@@ -70,7 +70,10 @@
 
   # home manager
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { 
+      inherit inputs;
+      inherit neovim-conf;
+    };
     users = {
       "aron" = import ./home.nix;
     };
@@ -91,15 +94,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 
-    # custom neovim-conf
-    neovim-conf
-
-    spotify
     ferdium
-    obsidian
-
-    prismlauncher
-
 
     tree
     dolphin
@@ -110,50 +105,17 @@
     nix-output-monitor
     nvd
 
-    # programming
-    git
-    neovim
-    typora
-
     # bar
-    waybar
+    #waybar
     capture
 
     # colorschemes
-    base16-schemes
-    # wallpaper
-    swww
-
-    ngrok
-
-    # app launcher
-    rofi-wayland
-    
-    #notification daemon
-    mako
-    libnotify
-
-    # discord
-    vesktop
 
     libreoffice-qt-fresh
 
-    lutris
-
     # floorp
     floorp
-    
-    rustup
   ];
-
-  # portals
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  
-
-  # hyprland enable
-  programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
 
   # Some programs need SUID wrappers, can be configured further or are

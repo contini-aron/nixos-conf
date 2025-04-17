@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    base16-schemes
+  ];
   # colorscheme
   # stylix.base16Scheme = {
   #   base00 = "32302f"; # ----

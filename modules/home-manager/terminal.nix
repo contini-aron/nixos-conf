@@ -17,28 +17,34 @@
     zellij
   ];
 
-  programs.gpg.enable = true;
-  services.gpg-agent = {
-    enable = true;
-    enableBashIntegration = true;
-    enableSshSupport = true;
-    # pinentryFlavor = "qt";
-    pinentryPackage = pkgs.pinentry-qt;
-    enableScDaemon = true;
-  };
-  # file previewer
-  programs.pistol.enable = true;
+  # programs.gpg.enable = true;
+  # services.gpg-agent = {
+  #   enable = true;
+  #   enableBashIntegration = true;
+  #   enableSshSupport = true;
+  #   # pinentryFlavor = "qt";
+  #   pinentryPackage = pkgs.pinentry-qt;
+  #   enableScDaemon = true;
+  # };
+  programs = {
+    # file previewer
+    pistol.enable = true;
+    atuin.enable = true;
+    atuin.enableBashIntegration = true;
+    jq.enable = true;
+    eza = {
+      enable = true;
+      enableBashIntegration = true;
+    };
 
-  programs.atuin.enable = true;
-  programs.atuin.enableBashIntegration = true;
-  programs.jq.enable = true;
-  programs.eza = {
-    enable = true;
-    enableBashIntegration = true;
+    bash = {
+      enable = true;
+      shellAliases = {
+        ll = "eza -l";
+        la = "eza -la";
+      };
+    };
   };
 
-  programs.bash.shellAliases = {
-    ll = "eza -l";
-    la = "eza -la";
-  };
+
 }

@@ -1,3 +1,4 @@
+{ pkgs, lib, config, ... }:
 {
   programs = {
     steam = {
@@ -8,4 +9,9 @@
     };
     gamemode.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    prismlauncher
+    vesktop
+  ];
 }

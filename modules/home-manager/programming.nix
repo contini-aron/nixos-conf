@@ -1,18 +1,15 @@
 
-{ pkgs,... }:
+{ pkgs, neovim-conf, ... }:
 
 {
   home.packages = with pkgs; [
-   # k8s
+    # custom neovim-conf
+    python314
+    neovim-conf
     go
     rustc
     gh
-  ];
-
-  programs.bash.enable = true;
-
-  imports = [
-    # ../../pkgs/nixvim/home.nix
+    git
   ];
 
 }
