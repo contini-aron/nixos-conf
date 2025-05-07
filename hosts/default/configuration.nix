@@ -102,9 +102,8 @@
     nix-output-monitor
     nvd
 
-    # bar
-    #waybar
     capture
+    pulsemixer
 
     # colorschemes
 

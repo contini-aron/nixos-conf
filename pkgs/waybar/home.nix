@@ -184,7 +184,7 @@ in
         # on-scroll-up= "bash ~/.scripts/volume up";
         # on-scroll-down= "bash ~/.scripts/volume down";
         scroll-step = 5;
-        on-click = "pavucontrol";
+        on-click = "pulsemixer";
       };
     };
     };
