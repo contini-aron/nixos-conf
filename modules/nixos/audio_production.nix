@@ -3,6 +3,11 @@
   imports = [
     inputs.musnix.nixosModules.musnix
   ];
+  environment.systemPackages = with pkgs; [
+    reaper
+    qpwgraph
+    vital
+  ];
   # music config
   musnix.enable = true;
   security.pam.loginLimits = [

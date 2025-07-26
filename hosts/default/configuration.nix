@@ -5,6 +5,7 @@
 { pkgs, inputs, neovim-conf, lib, config, ... }:
 
 {
+
   imports =
     [ # Include the results of the hardware scan.
       inputs.stylix.nixosModules.stylix
@@ -20,9 +21,18 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 5; # limit boot entries to 5
+
+  nix.gc.automatic = true;
+  nix.gc.options = "--delete-older-than +5";
+  nix.settings.auto-optimise-store = true;
 
   # docker
   virtualisation.docker.enable = true;
+
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.theme = "chili";
+  services.displayManager.sddm.wayland.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -111,6 +121,10 @@
 
     # floorp
     floorp
+    qutebrowser-qt5
+
+
+    sddm-chili-theme
   ];
 
 

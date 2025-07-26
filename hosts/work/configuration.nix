@@ -5,6 +5,7 @@
 { pkgs, inputs, neovim-conf, lib, config, ... }:
 
 {
+
   imports =
     [ # Include the results of the hardware scan.
       inputs.stylix.nixosModules.stylix

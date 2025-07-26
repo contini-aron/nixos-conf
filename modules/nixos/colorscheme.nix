@@ -26,6 +26,6 @@
   stylix.image = /home/aron/flake/resources/wallpapers/default.png;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
   
-  stylix.cursor.package = pkgs.bibata-cursors;
-  stylix.cursor.name = "Bibata-Modern-Ice";
+  # stylix.cursor.package = pkgs.bibata-cursors;
+  # stylix.cursor.name = "Bibata-Modern-Ice";
 }

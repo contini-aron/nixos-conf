@@ -13,6 +13,7 @@
       tabstop = 2;
       expandtab = true;
       };
+    lsp.enable = true;
     languages = {
       nix = {
         enable = true;
@@ -26,7 +27,7 @@
       # enables treesitter by default for enabled languages
       enableTreesitter = true;
       # enables LSP by default for enabled languages
-      enableLSP = true;
+      # enableLSP = true;
       };
     binds.whichKey.enable = true;
     visuals = {

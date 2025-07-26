@@ -21,6 +21,5 @@
 
     # utilities
     tree
-    dolphin
   ];
 }
