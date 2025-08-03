@@ -5,13 +5,14 @@
     startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
       ${pkgs.waybar}/bin/waybar &
       ${pkgs.swww}/bin/swww init &
-      ${pkgs.swww}/bin/dunst &
   
       sleep 1
   
       ${pkgs.swww}/bin/swww img ${../../resources/wallpapers/default.png} &
     '';
 in
+  # ${pkgs.swww}/bin/swww-daemon &
+  # ${pkgs.swww}/bin/dunst &
 {
   wayland.windowManager.hyprland = {
     enable = true;

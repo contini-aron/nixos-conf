@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, inputs, neovim-conf, lib, config, ... }:
+{ pkgs, pkgs-old, inputs, neovim-conf, lib, config, ... }:
 
 {
 
@@ -102,6 +102,16 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  # environment.systemPackages = with pkgs-old; [
+  #   floorp
+  # ];
+  nixpkgs.overlays = [
+    # Overlay: Use `self` and `super` to express
+    # the inheritance relationship
+    (self: super: {
+      floorp = pkgs-old.floorp;
+    })
+  ];
   environment.systemPackages = with pkgs; [
 
     ferdium
@@ -119,10 +129,12 @@
 
     libreoffice-qt-fresh
 
+    bitwarden
+
     # floorp
     floorp
-    qutebrowser-qt5
-
+    qutebrowser
+    tor-browser
 
     sddm-chili-theme
   ];

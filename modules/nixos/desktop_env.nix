@@ -15,10 +15,6 @@
     # app launcher
     rofi-wayland
     
-    #notification daemon
-    mako
-    libnotify
-
     # utilities
     tree
   ];

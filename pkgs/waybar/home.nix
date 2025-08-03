@@ -65,18 +65,37 @@ in
 	      margin: 5px 0px;
 	  }
 
-	  #cpu, #memory{
+	  #cpu, #memory {
 	      color: #${primary_accent};
 	      border-radius: 24px 10px 24px 10px;
 	      padding: 0 20px;
 	      margin-left: 7px;
 	  }
+
 	  #tray, #pulseaudio, #network, #battery{
 	      color: #${primary_accent};
 	      border-radius: 10px 24px 10px 24px;
 	      padding: 0 20px;
 	      margin-left: 7px;
 	  }
+
+    #custom-poweroff, #custom-reboot, #custom-lock-screen {
+	      color: #${secondary_accent};
+	      background-color: #${background};
+	      font-weight: bold;
+	      font-size: 15px;
+	  }
+    #custom-poweroff:hover, #custom-reboot:hover, #custom-lock-screen:hover {
+	      color: #${tertiary_accent};
+	      background-color: #${background};
+	      font-weight: bold;
+	      font-size: 15px;
+	  }
+    #custom-lock-screen {
+	      border-radius: 0px 0px 40px 0px;
+        padding-right: 15px;
+	  }
+
 	  #clock {
 	      color: #${tertiary_accent};
 	      background-color: #${background};
@@ -86,6 +105,7 @@ in
 	      font-weight: bold;
 	      font-size: 12px;
 	  }
+
 	  #window{
 	      background: #${background};
 	      padding-left: 15px;
@@ -107,6 +127,9 @@ in
       margin-left = 0;
       margin-right = 0;
       modules-left = [
+        "custom/poweroff"
+        "custom/reboot"
+        "custom/lock-screen"
         "memory"
         "cpu"
       ];
@@ -152,6 +175,26 @@ in
         format-plugged = " {capacity}% ";
         format-alt = "{icon} {time}";
         format-icons = [ "" "" "" "" "" ];
+      };
+      "custom/hello-from-waybar" = {
+        format = "hello {}";
+        max-length = 40;
+        interval = "once";
+        exec = pkgs.writeShellScript "hello-from-waybar" ''
+          echo "from within waybar"
+        '';
+      };
+      "custom/lock-screen" = {
+        on-click = "hyprlock";
+        format =  "  ";
+      };
+      "custom/poweroff" = {
+        on-click = "poweroff";
+        format =  "  ";
+      };
+      "custom/reboot" = {
+        on-click = "reboot";
+        format =  "  ";
       };
   
       memory = {
