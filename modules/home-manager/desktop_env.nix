@@ -75,5 +75,6 @@
     ../../pkgs/hyprland/home.nix
     ../../pkgs/waybar/home.nix
     ../../pkgs/ferdium/home.nix
+    ../../pkgs/eww/home.nix
   ];
 }
