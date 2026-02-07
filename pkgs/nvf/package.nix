@@ -7,6 +7,13 @@
       style = "dark";
       };
     lineNumberMode = "relative";
+    diagnostics = {
+      enable = true;
+      config = {
+      virtual_text = true;
+      update_in_insert = true;
+      };
+    };
     options = {
       number = true;
       shiftwidth = 2;
