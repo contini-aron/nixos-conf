@@ -13,7 +13,7 @@
     swww
 
     # app launcher
-    rofi-wayland
+    rofi
     
     # utilities
     tree

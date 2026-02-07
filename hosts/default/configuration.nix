@@ -28,11 +28,15 @@
   nix.settings.auto-optimise-store = true;
 
   # docker
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true; 
+    extraOptions = ''
+      --insecure-registry "http://10.10.10.11:5000"
+      '';
+  };
 
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.theme = "chili";
-  services.displayManager.sddm.wayland.enable = true;
+  # Xbox contoller driver 
+  hardware.xone.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -129,14 +133,10 @@
 
     libreoffice-qt-fresh
 
-    bitwarden
-
     # floorp
     floorp
     qutebrowser
     tor-browser
-
-    sddm-chili-theme
   ];
 
 

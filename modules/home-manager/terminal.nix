@@ -9,12 +9,14 @@
     # k8s
     yq
     jq
-    neomutt
-    mutt-wizard
-    pass
+    # neomutt
+    # mutt-wizard
+    # pass
     isync
-    lynx
+    # lynx
     zellij
+    fastfetch # shell startup
+    yazi # files and folders cli
   ];
 
   # programs.gpg.enable = true;
@@ -43,6 +45,7 @@
         ll = "eza -l";
         la = "eza -la";
       };
+      bashrcExtra = "fastfetch";
     };
   };
 

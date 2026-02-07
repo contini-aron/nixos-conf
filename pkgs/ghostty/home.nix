@@ -9,9 +9,12 @@
     enableBashIntegration = true;
     installVimSyntax = true;
     settings = {
-      theme = "GruvboxDark";
+      theme = "Gruvbox Dark";
       font-size = 11;
-      font-family = "CaskayidiaCove Mono";
+      font-family = "CaskayidiaMono Nerd Font";
+      keybind = [
+        "performable:ctrl+c=copy_to_clipboard"
+      ];
     };
   };
 }
