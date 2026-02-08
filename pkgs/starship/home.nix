@@ -1,19 +1,23 @@
 # starship home manager config
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   programs.starship = {
     enable = true;
 
-
     settings = {
       ## FIRST LINE/ROW: Info & Status
       # First param ─┌
       username = {
-	format = " [╭─$user]($style)@";
-	style_user = "bold red";
-	style_root = "bold red";
-	show_always = true;
+        format = " [╭─$user]($style)@";
+        style_user = "bold red";
+        style_root = "bold red";
+        show_always = true;
       };
 
       # Second param
@@ -80,91 +84,91 @@
         map_symbol = true;
         disabled = false;
       };
-      
+
       aws = {
         symbol = " ";
       };
-      
+
       conda = {
         symbol = " ";
       };
-      
+
       dart = {
         symbol = " ";
       };
-      
+
       docker_context = {
         symbol = " ";
       };
-      
+
       elixir = {
         symbol = " ";
       };
-      
+
       elm = {
         symbol = " ";
       };
-      
+
       git_branch = {
         symbol = " ";
       };
-      
+
       golang = {
         symbol = " ";
       };
-      
+
       haskell = {
         symbol = " ";
       };
-      
+
       hg_branch = {
         symbol = " ";
       };
-      
+
       java = {
         symbol = " ";
       };
-      
+
       julia = {
         symbol = " ";
       };
-      
+
       nim = {
         symbol = " ";
       };
-      
+
       nix_shell = {
         symbol = " ";
       };
-      
+
       nodejs = {
         symbol = " ";
       };
-      
+
       package = {
         symbol = " ";
       };
-      
+
       perl = {
         symbol = " ";
       };
-      
+
       php = {
         symbol = " ";
       };
-      
+
       python = {
         symbol = " ";
       };
-      
+
       ruby = {
         symbol = " ";
       };
-      
+
       rust = {
         symbol = " ";
       };
-      
+
       swift = {
         symbol = "ﯣ ";
       };
