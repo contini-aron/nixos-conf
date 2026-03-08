@@ -17,6 +17,7 @@
     zellij
     fastfetch # shell startup
     yazi # files and folders cli
+    devbox
   ];
 
   # programs.gpg.enable = true;

@@ -51,6 +51,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       pkgs-old = nixpkgs-old.legacyPackages.${system};
+      lib = nixpkgs.lib; 
     in
     {
 

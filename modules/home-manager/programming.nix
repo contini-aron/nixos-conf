@@ -4,12 +4,8 @@
 {
   home.packages = with pkgs; [
     # custom neovim-conf
-    python314
-    neovim-conf
-    go
-    rustc
-    gh
     git
+    neovim-conf
   ];
 
 }
