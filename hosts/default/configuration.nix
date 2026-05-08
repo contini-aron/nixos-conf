@@ -20,6 +20,8 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.timeout = null;
+  boot.loader.systemd-boot.consoleMode = "auto";
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 5; # limit boot entries to 5
 
@@ -40,7 +42,7 @@
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.wireless.iwd.enable = true;
+  # networking.wireless.iwd.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -120,7 +122,6 @@
   environment.systemPackages = with pkgs; [
 
      
-    xboxdrv
     ferdium
 
     #stats
@@ -139,8 +140,10 @@
     # floorp
     floorp
     qutebrowser
-    tor-browser
+
+    neomutt
   ];
+  
 
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -1,8 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, self, ... }:
 
 {
   imports = [
     inputs.stylix.homeModules.stylix
+    inputs.noctalia.homeModules.default
     ../../modules/home-manager/default.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
@@ -42,7 +43,7 @@
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  home.file = {
+  # home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -53,6 +54,24 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+  # };
+
+  home.file.".local/share/wallpaper.png" = {
+      source = "${../../resources/wallpapers/default.png}";
+  };
+  home.file.".cache/noctalia/wallpapers.json" = {
+    text = builtins.toJSON {
+      defaultWallpaper = "${config.home.homeDirectory}/.local/share/wallpaper.png";
+    };
+  };
+  programs.noctalia-shell = {
+    enable = true;
+    settings = {
+      # configure noctalia here
+      colorSchemes.predefinedScheme = "Gruvbox";
+      wallpaper.directory = "${config.home.homeDirectory}/.local/share/";
+    };
+    # this may also be a string or a path to a JSON file.
   };
 
   # Home Manager can also manage your environment variables through

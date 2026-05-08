@@ -5,18 +5,18 @@
 {
 
   # wallpaper daemon
-  services.swww.enable = true;
+  # services.swww.enable = true;
   # notification daemon
-  services.dunst = {
-    enable = true;
-    settings = {
-      global = {
-        transparency = 50;
-        offset = "(10,10)";
-        origin = "top-right";
-      };
-    };
-  };
+  # services.dunst = {
+  #   enable = true;
+  #   settings = {
+  #     global = {
+  #       transparency = 50;
+  #       offset = "(10,10)";
+  #       origin = "top-right";
+  #     };
+  #   };
+  # };
   programs.hyprlock = {
     enable = true;
     settings = {

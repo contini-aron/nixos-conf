@@ -2,13 +2,16 @@
 { pkgs, lib, config, ... }:
 
   let
+    # startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
+    #   ${pkgs.waybar}/bin/waybar &
+    #   ${pkgs.swww}/bin/swww init &
+    #
+    #   sleep 1
+    #
+    #   ${pkgs.swww}/bin/swww img ${../../resources/wallpapers/default.png} &
+    # '';
     startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-      ${pkgs.waybar}/bin/waybar &
-      ${pkgs.swww}/bin/swww init &
-  
-      sleep 1
-  
-      ${pkgs.swww}/bin/swww img ${../../resources/wallpapers/default.png} &
+      noctalia-shell
     '';
 in
   # ${pkgs.swww}/bin/swww-daemon &
@@ -26,9 +29,11 @@ in
         gaps_in = 1;
       };
 
-      windowrulev2 = [
-	"noborder, onworkspace:w[t1]"
+      # windowrulev2 = [ "noborder, onworkspace:w[t1]" ];
+      windowrule = [
+        "border_size 0, match:float 0, match:workspace w[t1]"
       ];
+
       # bindings
       bind = [
         "$mainmod, T, exec, ghostty"
@@ -39,7 +44,7 @@ in
         "$mainmod, F, exec, $notifycmd 'Toggled fullscreen'"
 
 	# searchbar
-        "$mainmod, SPACE, exec, rofi -show drun -show-icons"
+        "$mainmod, SPACE, exec, noctalia-shell ipc call launcher toggle" #rofi -show drun -show-icons"
 
         # move focus
         "$mainmod, j, movefocus, d"

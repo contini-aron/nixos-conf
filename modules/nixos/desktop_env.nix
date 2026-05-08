@@ -10,10 +10,10 @@
 
   environment.systemPackages = with pkgs; [
     # wallpaper
-    swww
+    # swww
 
     # app launcher
-    rofi
+    # rofi
     
     # utilities
     tree
