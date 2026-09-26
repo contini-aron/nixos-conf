@@ -1,5 +1,6 @@
 {
   imports = [
+    ./ai.nix
     ./music.nix
     ./audio_production.nix
     ./notes.nix

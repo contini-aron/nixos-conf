@@ -37,7 +37,7 @@ in
       # bindings
       bind = [
         "$mainmod, T, exec, ghostty"
-        "$mainmod, B, exec, floorp"
+        "$mainmod, B, exec, chromium"
         "$mainmod, Q, killactive"
         "$mainmod, M, exit"
         "$mainmod, F, fullscreen"

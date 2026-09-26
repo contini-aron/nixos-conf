@@ -25,6 +25,16 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 5; # limit boot entries to 5
 
+  # make boot logs persistent
+  services.journald.extraConfig = ''
+    Storage=persistent
+    SyncIntervalSec=1s
+    RuntimeMaxUse=64M
+    SystemMaxUse=2G
+  '';
+  boot.kernelParams = [ "log_buf_len=16M" "printk.devkmsg=on" ];
+  boot.kernel.sysctl."kernel.sysrq" = 1;
+
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than +5";
   nix.settings.auto-optimise-store = true;
@@ -37,6 +47,13 @@
       '';
   };
 
+   
+  networking.extraHosts = "127.0.0.1 ${config.networking.hostName}";
+
+  services.displayManager.ly = {
+    enable = true;
+    x11Support = false;
+  };
   # Xbox contoller driver 
   hardware.xone.enable = true;
 
@@ -78,7 +95,7 @@
   users.users.aron = {
     isNormalUser = true;
     description = "aron";
-    extraGroups = [ "networkmanager" "wheel" "audio" "libvirtd" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "libvirtd" "docker" "dialout"];
     packages = with pkgs; [];
   };
 
@@ -139,6 +156,7 @@
 
     # floorp
     floorp
+    chromium
     qutebrowser
 
     neomutt
