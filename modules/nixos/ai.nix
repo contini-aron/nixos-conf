@@ -3,6 +3,7 @@
 {
   # Add Node.js 18 with npm that works with the pi tool
   environment.systemPackages = with pkgs; [
+    claude-code
     amdgpu_top
     rocmPackages.rocminfo
     pi-coding-agent

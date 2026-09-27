@@ -13,74 +13,87 @@
     startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
       noctalia-shell
     '';
+    lua = lib.generators.mkLuaInline;
 in
   # ${pkgs.swww}/bin/swww-daemon &
   # ${pkgs.swww}/bin/dunst &
 {
   wayland.windowManager.hyprland = {
     enable = true;
-
+    configType = "lua";
 
     settings = {
-      "$mainmod" = "SUPER";
-      "$notyficmd" = "notify-send -h string:x-canonical-private-synchronous:hypr-cfg -u low";
-      general = {
-        gaps_out = 1;
-        gaps_in = 1;
+      config = {
+        general = {
+          gaps_out = 1;
+          gaps_in = 1;
+        };
+        ecosystem = {
+          no_donation_nag = true;
+        };
       };
 
-      # windowrulev2 = [ "noborder, onworkspace:w[t1]" ];
-      windowrule = [
-        "border_size 0, match:float 0, match:workspace w[t1]"
-      ];
+      # TODO: windowrule (border_size 0 on tiled windows in workspace w[t1])
+      # was dropped during the hyprlang -> lua migration: the lua `window_rule`
+      # table's `match.*` field names (floating state, workspace matcher) aren't
+      # confirmed yet, so re-add once that's verified against the wiki.
 
       # bindings
       bind = [
-        "$mainmod, T, exec, ghostty"
-        "$mainmod, B, exec, chromium"
-        "$mainmod, Q, killactive"
-        "$mainmod, M, exit"
-        "$mainmod, F, fullscreen"
-        "$mainmod, F, exec, $notifycmd 'Toggled fullscreen'"
+        { _args = [ "SUPER + T" (lua "hl.dsp.exec_cmd(\"ghostty\")") ]; }
+        { _args = [ "SUPER + B" (lua "hl.dsp.exec_cmd(\"chromium\")") ]; }
+        { _args = [ "SUPER + Q" (lua "hl.dsp.window.close()") ]; }
+        { _args = [ "SUPER + M" (lua "hl.dsp.exit()") ]; }
+        { _args = [ "SUPER + F" (lua "hl.dsp.window.fullscreen({ action = \"toggle\", mode = \"fullscreen\" })") ]; }
+        { _args = [ "SUPER + F" (lua "hl.dsp.exec_cmd(\"notify-send -h string:x-canonical-private-synchronous:hypr-cfg -u low 'Toggled fullscreen'\")") ]; }
 
-	# searchbar
-        "$mainmod, SPACE, exec, noctalia-shell ipc call launcher toggle" #rofi -show drun -show-icons"
+        # searchbar
+        { _args = [ "SUPER + SPACE" (lua "hl.dsp.exec_cmd(\"noctalia-shell ipc call launcher toggle\")") ]; }
 
         # move focus
-        "$mainmod, j, movefocus, d"
-        "$mainmod, k, movefocus, u"
-        "$mainmod, l, movefocus, r"
-        "$mainmod, h, movefocus, l"
+        { _args = [ "SUPER + j" (lua "hl.dsp.focus({ direction = \"d\" })") ]; }
+        { _args = [ "SUPER + k" (lua "hl.dsp.focus({ direction = \"u\" })") ]; }
+        { _args = [ "SUPER + l" (lua "hl.dsp.focus({ direction = \"r\" })") ]; }
+        { _args = [ "SUPER + h" (lua "hl.dsp.focus({ direction = \"l\" })") ]; }
 
         # switch workspace
-        "$mainmod, 1, workspace, 1"
-        "$mainmod, 2, workspace, 2"
-        "$mainmod, 3, workspace, 3"
-        "$mainmod, 4, workspace, 4"
-        "$mainmod, 5, workspace, 5"
-        "$mainmod, 6, workspace, 6"
-        "$mainmod, 7, workspace, 7"
-        "$mainmod, 8, workspace, 8"
-        "$mainmod, 9, workspace, 9"
-        "$mainmod, 0, workspace, 10"
-        "$mainmod ALT, j, workspace, e-1"
-        "$mainmod ALT, k, workspace, e+1"
+        { _args = [ "SUPER + 1" (lua "hl.dsp.focus({ workspace = 1 })") ]; }
+        { _args = [ "SUPER + 2" (lua "hl.dsp.focus({ workspace = 2 })") ]; }
+        { _args = [ "SUPER + 3" (lua "hl.dsp.focus({ workspace = 3 })") ]; }
+        { _args = [ "SUPER + 4" (lua "hl.dsp.focus({ workspace = 4 })") ]; }
+        { _args = [ "SUPER + 5" (lua "hl.dsp.focus({ workspace = 5 })") ]; }
+        { _args = [ "SUPER + 6" (lua "hl.dsp.focus({ workspace = 6 })") ]; }
+        { _args = [ "SUPER + 7" (lua "hl.dsp.focus({ workspace = 7 })") ]; }
+        { _args = [ "SUPER + 8" (lua "hl.dsp.focus({ workspace = 8 })") ]; }
+        { _args = [ "SUPER + 9" (lua "hl.dsp.focus({ workspace = 9 })") ]; }
+        { _args = [ "SUPER + 0" (lua "hl.dsp.focus({ workspace = 10 })") ]; }
+        { _args = [ "SUPER + ALT + j" (lua "hl.dsp.focus({ workspace = \"e-1\" })") ]; }
+        { _args = [ "SUPER + ALT + k" (lua "hl.dsp.focus({ workspace = \"e+1\" })") ]; }
 
-	# move to workspace
-        "$mainmod SHIFT, 1, movetoworkspace, 1"
-        "$mainmod SHIFT, 2, movetoworkspace, 2"
-        "$mainmod SHIFT, 3, movetoworkspace, 3"
-        "$mainmod SHIFT, 4, movetoworkspace, 4"
-        "$mainmod SHIFT, 5, movetoworkspace, 5"
-        "$mainmod SHIFT, 6, movetoworkspace, 6"
-        "$mainmod SHIFT, 7, movetoworkspace, 7"
-        "$mainmod SHIFT, 8, movetoworkspace, 8"
-        "$mainmod SHIFT, 9, movetoworkspace, 9"
-        "$mainmod SHIFT, 0, movetoworkspace, 10"
+        # move to workspace
+        { _args = [ "SUPER + SHIFT + 1" (lua "hl.dsp.window.move({ workspace = 1, follow = true })") ]; }
+        { _args = [ "SUPER + SHIFT + 2" (lua "hl.dsp.window.move({ workspace = 2, follow = true })") ]; }
+        { _args = [ "SUPER + SHIFT + 3" (lua "hl.dsp.window.move({ workspace = 3, follow = true })") ]; }
+        { _args = [ "SUPER + SHIFT + 4" (lua "hl.dsp.window.move({ workspace = 4, follow = true })") ]; }
+        { _args = [ "SUPER + SHIFT + 5" (lua "hl.dsp.window.move({ workspace = 5, follow = true })") ]; }
+        { _args = [ "SUPER + SHIFT + 6" (lua "hl.dsp.window.move({ workspace = 6, follow = true })") ]; }
+        { _args = [ "SUPER + SHIFT + 7" (lua "hl.dsp.window.move({ workspace = 7, follow = true })") ]; }
+        { _args = [ "SUPER + SHIFT + 8" (lua "hl.dsp.window.move({ workspace = 8, follow = true })") ]; }
+        { _args = [ "SUPER + SHIFT + 9" (lua "hl.dsp.window.move({ workspace = 9, follow = true })") ]; }
+        { _args = [ "SUPER + SHIFT + 0" (lua "hl.dsp.window.move({ workspace = 10, follow = true })") ]; }
       ];
-      
+
       # startup script
-      exec-once = ''${startupScript}/bin/start'';
+      on = {
+        _args = [
+          "hyprland.start"
+          (lua ''
+            function()
+              hl.dispatch(hl.dsp.exec_cmd("${startupScript}/bin/start"))
+            end
+          '')
+        ];
+      };
     };
   };
 }

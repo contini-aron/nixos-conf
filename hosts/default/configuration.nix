@@ -26,12 +26,12 @@
   boot.loader.systemd-boot.configurationLimit = 5; # limit boot entries to 5
 
   # make boot logs persistent
-  services.journald.extraConfig = ''
-    Storage=persistent
-    SyncIntervalSec=1s
-    RuntimeMaxUse=64M
-    SystemMaxUse=2G
-  '';
+  # services.journald.extraConfig = ''
+  #   Storage=persistent
+  #   SyncIntervalSec=1s
+  #   RuntimeMaxUse=64M
+  #   SystemMaxUse=2G
+  # '';
   boot.kernelParams = [ "log_buf_len=16M" "printk.devkmsg=on" ];
   boot.kernel.sysctl."kernel.sysrq" = 1;
 
@@ -152,7 +152,7 @@
 
     # colorschemes
 
-    libreoffice-qt-fresh
+    libreoffice-qt
 
     # floorp
     floorp
