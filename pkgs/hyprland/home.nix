@@ -2,21 +2,8 @@
 { pkgs, lib, config, ... }:
 
   let
-    # startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-    #   ${pkgs.waybar}/bin/waybar &
-    #   ${pkgs.swww}/bin/swww init &
-    #
-    #   sleep 1
-    #
-    #   ${pkgs.swww}/bin/swww img ${../../resources/wallpapers/default.png} &
-    # '';
-    startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-      noctalia-shell
-    '';
     lua = lib.generators.mkLuaInline;
 in
-  # ${pkgs.swww}/bin/swww-daemon &
-  # ${pkgs.swww}/bin/dunst &
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -27,6 +14,9 @@ in
         general = {
           gaps_out = 1;
           gaps_in = 1;
+        };
+        decoration = {
+          rounding = 6;
         };
         ecosystem = {
           no_donation_nag = true;
@@ -48,7 +38,7 @@ in
         { _args = [ "SUPER + F" (lua "hl.dsp.exec_cmd(\"notify-send -h string:x-canonical-private-synchronous:hypr-cfg -u low 'Toggled fullscreen'\")") ]; }
 
         # searchbar
-        { _args = [ "SUPER + SPACE" (lua "hl.dsp.exec_cmd(\"noctalia-shell ipc call launcher toggle\")") ]; }
+        { _args = [ "SUPER + SPACE" (lua "hl.dsp.exec_cmd(\"noctalia msg panel-toggle launcher\")") ]; }
 
         # move focus
         { _args = [ "SUPER + j" (lua "hl.dsp.focus({ direction = \"d\" })") ]; }
@@ -82,18 +72,6 @@ in
         { _args = [ "SUPER + SHIFT + 9" (lua "hl.dsp.window.move({ workspace = 9, follow = true })") ]; }
         { _args = [ "SUPER + SHIFT + 0" (lua "hl.dsp.window.move({ workspace = 10, follow = true })") ]; }
       ];
-
-      # startup script
-      on = {
-        _args = [
-          "hyprland.start"
-          (lua ''
-            function()
-              hl.dispatch(hl.dsp.exec_cmd("${startupScript}/bin/start"))
-            end
-          '')
-        ];
-      };
     };
   };
 }

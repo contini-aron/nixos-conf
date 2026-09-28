@@ -59,19 +59,36 @@
   home.file.".local/share/wallpaper.png" = {
       source = "${../../resources/wallpapers/default.png}";
   };
-  home.file.".cache/noctalia/wallpapers.json" = {
-    text = builtins.toJSON {
-      defaultWallpaper = "${config.home.homeDirectory}/.local/share/wallpaper.png";
-    };
-  };
-  programs.noctalia-shell = {
+  programs.noctalia = {
     enable = true;
+    systemd.enable = true;
     settings = {
-      # configure noctalia here
-      colorSchemes.predefinedScheme = "Gruvbox";
-      wallpaper.directory = "${config.home.homeDirectory}/.local/share/";
+      theme = {
+        mode = "dark";
+        source = "builtin";
+        builtin = "Gruvbox";
+      };
+      wallpaper = {
+        enabled = true;
+        default.path = "${config.home.homeDirectory}/.local/share/wallpaper.png";
+      };
+      shell = {
+        # apps launched from the launcher run as their own transient systemd
+        # services instead of children of the noctalia unit, so they survive
+        # a noctalia restart and get a clean session environment
+        launch_apps_as_systemd_services = true;
+      };
+      bar.main = {
+        # default is 100px inset from each end of the bar; 0 makes it span
+        # full-width with no left/right gap
+        margin_ends = 0;
+      };
+      audio = {
+        # master toggle for all noctalia theme sounds (notifications,
+        # volume-change, power-plug/unplug, screen-capture)
+        enable_sounds = false;
+      };
     };
-    # this may also be a string or a path to a JSON file.
   };
 
   # Home Manager can also manage your environment variables through
